@@ -99,12 +99,37 @@
 				<a href="#" class="mouse-btn" style="display: block;"><i class="icon ion ion-chevron-down"></i></a>
 			</div>
 			
-<script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
-    new Crate({
-        server: '898866408564350996', // mithat
-        channel: '906438893618987028' // #chat
+import React, {useEffect, useState} from 'react'
+import WidgetBot from "@widgetbot/react-embed";
+
+export default function WidgetDiscord() {
+
+    let [crate, setCrate] = useState()
+
+    useEffect(async () => {
+        let result = await import('@widgetbot/crate')
+        const Crate = await result.cdn();
+        crate = new Crate({
+            server: '898866408564350996',
+            channel: '906438893618987028',
+            location: ['bottom', 'right']
+        })
     })
-</script>
+
+    return (
+        <div>
+              /* button discord */ 
+            {crate}
+              /* full widget */
+            <WidgetBot
+                server="898866408564350996"
+                channel="906438893618987028"
+                width="600px"
+                height="600px"
+            />
+        </div>
+    )
+}
 		    <!-- Hakkımda Kısmı -->
 			<div class="section about align-center" id="about-section">
 			<div class="fw">
